@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EntityService.Infrastructure.Entityes
+﻿namespace EntityService.Infrastructure.Entityes
 {
-    internal class EntityFace
+    public class EntityFace
     {
+        public Guid Id { get; set; }
+
+        public string ActivityType { get; set; }
+
+        public string TIN { get; set; }
+
+        public string MSRN { get; set; }
+
+        public List<BankProp> BankProps { get;}
     }
 }
