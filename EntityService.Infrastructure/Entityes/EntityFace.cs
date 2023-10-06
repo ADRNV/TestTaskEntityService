@@ -10,6 +10,6 @@
 
         public string MSRN { get; set; }
 
-        public List<BankProp> BankProps { get;}
+        public List<BankProp> BankProps { get; }
     }
 }

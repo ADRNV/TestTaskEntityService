@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using EntityService.Infrastructure.Entityes;
+﻿using EntityService.Infrastructure.Entityes;
 using EntityService.Infrastructure.Entityes.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace EntityService.Infrastructure
 {
@@ -12,7 +12,7 @@ namespace EntityService.Infrastructure
 
         public OrganizationContext(DbContextOptions options) : base(options)
         {
-           
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
