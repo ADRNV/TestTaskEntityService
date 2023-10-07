@@ -7,7 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EntityService.Core\EntityService.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="EntityService.Core.BankProp">
+      <Alias>CoreBankProp</Alias>
+    </Using>
+    <Using Include="EntityService.Core.EntityFace">
+      <Alias>CoreEntityFace</Alias>
+    </Using>
+    <Using Include="EntityService.Infrastructure.Entityes.BankProp">
+      <Alias>DbBankProp</Alias>
+    </Using>
+    <Using Include="EntityService.Infrastructure.Entityes.EntityFace">
+      <Alias>DbEntityFace</Alias>
+    </Using>
   </ItemGroup>
 
 </Project>

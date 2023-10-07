@@ -2,14 +2,14 @@
 {
     public interface IRepository<T>
     {
-        Task Create();
+        Task Create(T entity);
 
         Task Update(T entity);
 
         Task Delete(T entity);
 
-        Task Get<I>(I id);
+        Task<T?> Get(Guid id);
 
-        Task Get(int page, int pageSize);
+        Task<IEnumerable<T>> Get(int page, int pageSize);
     }
 }
