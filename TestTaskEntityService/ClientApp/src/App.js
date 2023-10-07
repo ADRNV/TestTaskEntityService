@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import PropertyForm from './components/PropertyForm/PropertyForm';
 
-export default class App extends Component {
-  static displayName = App.name;
+export default function App(){
 
-  render() {
-      return (
-          <PropertyForm></PropertyForm>
-       );
-  }
+    return (
+        <PropertyForm></PropertyForm>
+     );
 }
