@@ -1,0 +1,10 @@
+.LCCForm--container{
+    display: flex;
+    flex-direction: column;
+}
+
+.LCCForm--row{
+    display: flex;
+    flex-direction: row;
+    gap: 14pt;
+}

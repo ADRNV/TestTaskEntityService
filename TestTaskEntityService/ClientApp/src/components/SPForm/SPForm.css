@@ -1,0 +1,16 @@
+.SPForm--container{
+    display: flex;
+    flex-direction: column;
+}
+
+.SPForm--row{
+    display: flex;
+    flex-direction: row;
+    gap: 14pt;
+}
+
+.officeOptions--container{
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+}
