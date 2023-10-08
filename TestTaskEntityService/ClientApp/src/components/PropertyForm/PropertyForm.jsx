@@ -10,12 +10,14 @@ export default function PropertyForm({props}) {
     
     var [property, setProperty] = useState("sp")
 
+    var [entity, setEntity] = useState({})
+
     function determineProperty(){
         switch (property){
             case "sp":
-                return <SPForm header={"Индивидуальный предприниматель(ИП)"}/>
+                return <SPForm header={"Индивидуальный предприниматель(ИП)"} entity={entity} setEntity={setEntity}/>
             case 'llc':
-                return <LLCForm header={"Общество с ограниченой ответсвенностью (ООО)"}></LLCForm>
+                return <LLCForm header={"Общество с ограниченой ответсвенностью (ООО)"} entity={entity} setEntity={setEntity}></LLCForm>
         }
             
     }

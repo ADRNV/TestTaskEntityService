@@ -5,7 +5,7 @@ import './LLCForm.css'
 import '../CommonStyles/FormStyles.css'
 import SPForm from '../SPForm/SPForm'
 
-export default function LLCForm({header}) {
+export default function LLCForm({header, entity, setEntity}) {
   return (
     <div className='LLCForm'>
         <div className='LLCForm--container'>
@@ -13,19 +13,21 @@ export default function LLCForm({header}) {
                 <div className='LCCForm--row'>
                     <Form.Group>
                         <Form.Label>Наименование полное*.</Form.Label>
-                        <Form.Control className='large-input' type="text" placeholder="ООО Московская промышленная компания"/>
+                        <Form.Control className='large-input' value={entity.fullName} onChange={(e) => {
+                            setEntity({...entity, fullName:e.target.value})
+                            }} type="text" placeholder="ООО Московская промышленная компания"/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Наименование сокращение*.</Form.Label>
-                        <Form.Control size="sm" type="text" placeholder="ООО МПК"/>
+                        <Form.Control onChange={(e) => setEntity({...entity, shortName:e.target.value})} size="sm" type="text" placeholder="ООО МПК"/>
                     </Form.Group>
-                   <Form.Group>
+                    <Form.Group>
                         <Form.Label>Дата регистрации*.</Form.Label>
-                        <Form.Control size="sm" type="date"/>
+                        <Form.Control onChange={(e) => setEntity({...entity, date:e.target.value})} size="sm" type="date"/>
                    </Form.Group>
                 </div>
                 <br/>
-                <SPForm></SPForm>
+                <SPForm entity={entity} setEntity={setEntity}></SPForm>
             <div className='SPForm--row'>
             </div>
         </div>

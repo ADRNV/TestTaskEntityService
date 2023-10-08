@@ -1,22 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import './SPForm.css'
 import '../CommonStyles/FormStyles.css'
 import Image from 'react-bootstrap/Image';
 import { InputGroup, Label } from 'reactstrap'
+import '../Validation/ValidationUtils'
 
-export default function SPForm({header}) {
-  return (
+export default function SPForm({header, entity, setEntity}) {
+
+    return (
     <div className='SPForm'>
         <div className='SPForm--container'>
             <Label className='Form--header'>{header}</Label>
             <div className='SPForm--row'>
-               <Form.Group className=''>
+               <Form.Group>
                     <Form.Label>ИНН*</Form.Label>
-                    <Form.Control size="sm" type="text" placeholder="xxxxxxxxxx" />
+                    <Form.Control size="sm" type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
+                        setEntity({...entity, tin:e.target.value, fullName:localStorage.getItem(e.target.value)})
+                        }}/>
                     <br/>
                     <Label>Дата регистрации</Label>
-                    <Form.Control type="date" placeholder='дд.мм.гггг'></Form.Control>
+                    <Form.Control type="date" onChange={(e) => setEntity({...entity, registrationDate:e.target.value})} placeholder='дд.мм.гггг'></Form.Control>
                </Form.Group>
                <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Скан ИНН*</Form.Label>
@@ -30,7 +34,7 @@ export default function SPForm({header}) {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>ОГРНИП*</Form.Label>
-                    <Form.Control type="text" placeholder="xxxxxxxxxx"/>
+                    <Form.Control onChange={(e) => setEntity({...entity, MSRN:e.target.value})} type="text" placeholder="xxxxxxxxxx"/>
                     <br/>
                 </Form.Group>
                 <Form.Group controlId="formFile" className="mb-3">
@@ -41,12 +45,9 @@ export default function SPForm({header}) {
                             <Form.Label>Скан договора аренды офиса</Form.Label>
                             <Form.Control type="file"/>
                         </Form.Group>
-                        <Form.Check label="Нет договора" id="disabled-default-checkbox"></Form.Check>
+                        <Form.Check label="Нет договора" id="disabled-default-checkbox" onChange={(e) => setEntity({...entity, office:e.target.value})}></Form.Check>
                     </div>
                 </Form.Group>
-            </div>
-            <div className='SPForm--row'>
-
             </div>
         </div>
     </div>

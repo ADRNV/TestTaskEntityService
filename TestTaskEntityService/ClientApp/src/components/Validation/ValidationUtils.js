@@ -1,6 +1,6 @@
 class ValidationUtils{
 
-    static validTIN(tin){
+    static validTIN(tin, error){
         var result = false;
         if (typeof tin === 'number') {
             tin = tin.toString();
