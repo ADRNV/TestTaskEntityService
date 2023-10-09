@@ -1,5 +1,6 @@
 import React, {useEffect } from 'react';
 import PropertyForm from './components/PropertyForm/PropertyForm';
+import BankForm from './components/BankForm/BankForm';
 
 export default function App(){
 
@@ -10,6 +11,10 @@ export default function App(){
         localStorage.setItem("66607548751", "ИП Адрианов")
     })
     return (
-        <PropertyForm></PropertyForm>
+        <div>
+            <PropertyForm></PropertyForm>
+            <BankForm></BankForm>
+        </div>
+        
      );
 }
