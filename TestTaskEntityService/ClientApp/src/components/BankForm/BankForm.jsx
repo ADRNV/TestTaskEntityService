@@ -4,10 +4,12 @@ import Form from 'react-bootstrap/Form'
 import '../CommonStyles/FormStyles.css'
 import '../Validation/ValidationUtils'
 import './BankForm.css'
+import BICInput from '../BICInput/BICInput'
+import CheckInput from '../CheckInput/CheckInput'
 
 export default function BankForm() {
 
-    var [bankProps, setBankProps] = useState({})
+    var [bankProp, setBankProp] = useState({})
 
   return (
     <div className='BankForm'>
@@ -15,16 +17,13 @@ export default function BankForm() {
         <div className='BankForm--container'>
             <div className='BankForm--row'>
                 <Form.Group>
-                    <Form.Label>БИК*</Form.Label>
-                    <Form.Control size="lg" type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
-                        setBankProps({...bankProps, biс:e.target.value, name:localStorage.getItem(e.target.value)})
-                        }}/>
+                    <BICInput bankProp={bankProp} setBankProp={setBankProp}/>
                         <br/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Название филиала банка*</Form.Label>
-                    <Form.Control size="lg" className='large-input' type="text" value={bankProps.name} placeholder="ПАО РНКБ" onChange={(e) => {
-                        setBankProps({...bankProps, name:e.target.value})
+                    <Form.Control size="lg" className='large-input' type="text" value={bankProp.name} placeholder="ПАО РНКБ" onChange={(e) => {
+                        setBankProp({...bankProp, name:e.target.value})
                         }}/>
                         <br/>
                 </Form.Group>
@@ -33,15 +32,12 @@ export default function BankForm() {
                 <Form.Group>
                     <Form.Label>Расчетный счет</Form.Label>
                     <Form.Control size="lg" type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
-                        setBankProps({...bankProps, settlementCheck :e.target.value, name:localStorage.getItem(e.target.value)})
+                        setBankProp({...bankProp, settlementCheck :e.target.value})
                         }}/>
                         <br/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Корреспонденский счет*</Form.Label>
-                    <Form.Control size="lg" type="text" value={bankProps.name} placeholder="ПАО РНКБ" onChange={(e) => {
-                        setBankProps({...bankProps, correspondentCheck :e.target.value})
-                        }}/>
+                    <CheckInput bankProp={bankProp} setBankProp={bankProp}/>
                         <br/>
                 </Form.Group>
             </div>

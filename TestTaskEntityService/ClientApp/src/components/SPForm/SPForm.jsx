@@ -5,6 +5,8 @@ import '../CommonStyles/FormStyles.css'
 import Image from 'react-bootstrap/Image';
 import { InputGroup, Label } from 'reactstrap'
 import '../Validation/ValidationUtils'
+import TINInput from '../TINInput/TINInput';
+import MSRNInput from '../MSRNInput/MSRNInput';
 
 export default function SPForm({header, entity, setEntity}) {
 
@@ -14,11 +16,7 @@ export default function SPForm({header, entity, setEntity}) {
             <Label className='Form--header'>{header}</Label>
             <div className='SPForm--row'>
                <Form.Group>
-                    <Form.Label>ИНН*</Form.Label>
-                    <Form.Control size="sm" type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
-                        setEntity({...entity, tin:e.target.value, fullName:localStorage.getItem(e.target.value)})
-                        }}/>
-                    <br/>
+                    <TINInput entity={entity} setEntity={setEntity}></TINInput>
                     <Label>Дата регистрации</Label>
                     <Form.Control type="date" onChange={(e) => setEntity({...entity, registrationDate:e.target.value})} placeholder='дд.мм.гггг'></Form.Control>
                </Form.Group>
@@ -32,11 +30,8 @@ export default function SPForm({header, entity, setEntity}) {
                     <Label>Скан выписки из ЕГРИП(не старше 3 месяцев)*</Label>
                     <Form.Control type="file" />
                 </Form.Group>
-                <Form.Group>
-                    <Form.Label>ОГРНИП*</Form.Label>
-                    <Form.Control onChange={(e) => setEntity({...entity, MSRN:e.target.value})} type="text" placeholder="xxxxxxxxxx"/>
+                    <MSRNInput entity={entity} setEntity={setEntity}/>
                     <br/>
-                </Form.Group>
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Скан ОГРНИП*</Form.Label>
                     <Form.Control type="file" />

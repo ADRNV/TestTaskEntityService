@@ -1,4 +1,4 @@
-class ValidationUtils{
+export default class ValidationUtils{
 
     static validTIN(tin, error){
         var result = false;
@@ -117,5 +117,14 @@ class ValidationUtils{
             }
         }
         return result;
+    }
+
+    static validateName(name, error){
+        if(name === ""){
+            error = "Имя не может быть пустым"
+            return false
+        }else{
+            return true
+        }
     }
 }

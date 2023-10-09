@@ -6,3 +6,8 @@
     font-size: 20pt;
     font-weight: bold;
 }
+
+.Input--error{
+    text-align: left;
+    color: rgba(208, 24, 24, 0.826);
+}
