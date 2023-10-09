@@ -19,15 +19,14 @@ export default class EntityClient{
             timeout: 1000,
           });
 
-        var data = await instance.post("create",{
-            params:{
-                Id:entity.id, 
-                ActivityType:entity.activityType,
-                TIN:entity.tin,
-                MSRN:entity.msrn,
-                BIKs:["none"],
-                RegistrationDate:entity.registrationDate
-            }})
-        console.log(data)
+
+        var body = JSON.stringify(entity)
+
+        var response = await instance.post("create",body,{
+            headers: {
+                  'Content-Type': 'application/json'
+            }
+        })
+        console.log(response)
     }
 }

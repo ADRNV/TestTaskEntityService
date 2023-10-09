@@ -45,7 +45,7 @@ export default function SPForm({header, entity, setEntity}) {
                             <Form.Label>Скан договора аренды офиса</Form.Label>
                             <Form.Control type="file"/>
                         </Form.Group>
-                        <Form.Check label="Нет договора" id="disabled-default-checkbox" onChange={(e) => setEntity({...entity, office:e.target.value})}></Form.Check>
+                        <Form.Check label="Нет договора" id="disabled-default-checkbox" onChange={(e) => setEntity({...entity, hasOffice:e.target.value})}></Form.Check>
                     </div>
                 </Form.Group>
             </div>

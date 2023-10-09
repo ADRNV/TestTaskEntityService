@@ -11,6 +11,8 @@
 
         public List<string> BIKs { get; set; }
 
+        public bool HasOffice { get; set; }
+
         public DateOnly RegistrationDate { get; set; }
     }
 }

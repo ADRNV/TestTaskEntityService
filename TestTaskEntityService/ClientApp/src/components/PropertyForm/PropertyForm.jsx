@@ -13,7 +13,7 @@ export default function PropertyForm({props}) {
     
     var [property, setProperty] = useState("sp")
 
-    var [entity, setEntity] = useState({})
+    var [entity, setEntity] = useState({ActivityType:property, BIKs:["123"]})
 
     var [fetching, loading, error] = useFetchHook(async () => {
         console.log(entity)

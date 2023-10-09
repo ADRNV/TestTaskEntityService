@@ -23,7 +23,7 @@ namespace TestTaskEntityService.Features.EntityFaces.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> Create([FromQuery]EntityFace entityFace)
+        public async Task<IActionResult> Create([FromBody]EntityFace entityFace)
         {
             await _mediator.Send(new CreateEntityFace.Command(entityFace));
 
