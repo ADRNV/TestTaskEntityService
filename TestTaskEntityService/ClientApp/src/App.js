@@ -1,6 +1,7 @@
 import React, {useEffect } from 'react';
 import PropertyForm from './components/PropertyForm/PropertyForm';
 import BankForm from './components/BankForm/BankForm';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 export default function App(){
 
@@ -11,10 +12,11 @@ export default function App(){
         localStorage.setItem("9709050939", "ООО Моя оборона")
     })
     return (
-        <div>
-            <PropertyForm></PropertyForm>
-            <BankForm></BankForm>
-        </div>
-        
-     );
+        <BrowserRouter>
+            <Routes>
+                <Route key="propertyform" path='/' element={<PropertyForm/>}/>
+                <Route key="bankprops" path='/bankprops' element={<BankForm/>}/>
+        </Routes>
+    </BrowserRouter>
+    );
 }

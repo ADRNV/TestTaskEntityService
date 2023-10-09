@@ -8,6 +8,7 @@ import '../CommonStyles/FormStyles.css'
 import { Button } from 'react-bootstrap'
 import EntityClient from '../../Services/EntityFaceClient'
 import { useFetchHook } from '../../hooks/useFetching'
+import { Link } from 'react-router-dom'
 
 export default function PropertyForm({props}) {
     
@@ -50,7 +51,7 @@ export default function PropertyForm({props}) {
             </Dropdown>
             </Form.Group>
             {determineProperty()}
-            <Button variant="light" onClick={() => fetching()}>Банковские реквизиты</Button>
+            <Button variant="light" onClick={() => fetching()}><Link to={"bankprops"}>Банковские реквизиты</Link></Button>
         </div>
   )
 }
