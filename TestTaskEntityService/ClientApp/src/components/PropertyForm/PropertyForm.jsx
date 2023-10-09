@@ -1,16 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import SPForm from '../SPForm/SPForm'
 import LLCForm from '../LLCForm/LLCForm'
 import Form from 'react-bootstrap/Form'
 import { Label } from 'reactstrap'
 import '../CommonStyles/FormStyles.css'
+import { Button } from 'react-bootstrap'
+import EntityClient from '../../Services/EntityFaceClient'
+import { useFetchHook } from '../../hooks/useFetching'
 
 export default function PropertyForm({props}) {
     
     var [property, setProperty] = useState("sp")
 
     var [entity, setEntity] = useState({})
+
+    var [fetching, loading, error] = useFetchHook(async () => {
+        console.log(entity)
+        await EntityClient.createEntity(entity)
+    })
+
+    useEffect(() => {
+        fetching()
+    }, [])
 
     function determineProperty(){
         switch (property){
@@ -37,8 +49,8 @@ export default function PropertyForm({props}) {
                 </Dropdown.Menu>
             </Dropdown>
             </Form.Group>
-            
             {determineProperty()}
+            <Button variant="light" onClick={() => fetching()}>Банковские реквизиты</Button>
         </div>
   )
 }

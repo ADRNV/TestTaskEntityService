@@ -23,7 +23,7 @@ export default function LLCForm({header, entity, setEntity}) {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Дата регистрации*.</Form.Label>
-                        <Form.Control onChange={(e) => setEntity({...entity, date:e.target.value})} size="sm" type="date"/>
+                        <Form.Control onChange={(e) => setEntity({...entity, registrationDate:e.target.value})} size="sm" type="date"/>
                    </Form.Group>
                 </div>
                 <br/>
