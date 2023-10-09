@@ -10,5 +10,7 @@
         public string MSRN { get; set; }
 
         public List<string> BIKs { get; set; }
+
+        public DateOnly RegistrationDate { get; set; }
     }
 }

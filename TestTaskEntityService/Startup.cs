@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using EntityService.Infrastructure;
 using Microsoft.OpenApi.Models;
+using EntityService.Core.Repositories;
+using EntityService.Infrastructure.Repositories;
+using EntityService.Infrastructure.Entityes.MappingConfiguration;
 
 namespace TestTaskEntityService
 {
@@ -25,15 +28,21 @@ namespace TestTaskEntityService
         {
             services.AddDbContext<OrganizationContext>(options =>
             {
-                options.UseSqlServer(_config.GetConnectionString("ApiUserDbConnection"));
+                options.UseSqlServer(_config.GetConnectionString("DbConnection"));
             });
+
 
             services.AddAutoMapper(c =>
             {
-            
+                c.AddProfile<EntityFaceMappingConfiguration>();
+                c.AddProfile<BankPropMappingConfiguration>();
             }, Assembly.GetExecutingAssembly());
 
-            services.AddMediatR(c => Assembly.GetExecutingAssembly());
+            services.AddScoped<IEntityFacesRepository, EntityFacesRepository>();
+
+            services.AddScoped<IBankPropsRepository, BankPropsRepository>();
+
+            services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
@@ -42,6 +51,16 @@ namespace TestTaskEntityService
             services.AddRouting();
 
             services.AddMvc();
+
+            services.AddCors(c =>
+            {
+                c.AddPolicy("EntityClient", p =>
+                {
+                    p.AllowAnyOrigin();
+                    p.AllowAnyHeader();
+                    p.AllowAnyMethod();
+                });
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -69,6 +88,13 @@ namespace TestTaskEntityService
             });
 
             app.UseRouting();
+
+            using (var scope =
+                        app.ApplicationServices.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<OrganizationContext>())
+                context.Database.EnsureCreated();
+
+            app.UseCors("EntityClient");
 
             app.UseSwagger();
 

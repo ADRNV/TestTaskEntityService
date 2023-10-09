@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EntityService.Infrastructure.Repositories
 {
-    public class EntityFacesRepository : RepositoryBase<CoreEntityFace>
+    public class EntityFacesRepository : RepositoryBase<CoreEntityFace>, IEntityFacesRepository
     {
         private readonly IMapper _mapper;
 

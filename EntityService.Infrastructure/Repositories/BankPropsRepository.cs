@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using EntityService.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 
 namespace EntityService.Infrastructure.Repositories
 {
-    public class BankPropsRepository : RepositoryBase<CoreBankProp>
+    public class BankPropsRepository : RepositoryBase<CoreBankProp>, IBankPropsRepository
     {
         private readonly IMapper _mapper;
 
