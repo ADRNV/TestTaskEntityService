@@ -19,7 +19,7 @@ export default function LLCForm({header, entity, setEntity}) {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Наименование сокращение*.</Form.Label>
-                        <Form.Control onChange={(e) => setEntity({...entity, shortName:e.target.value})} size="sm" type="text" placeholder="ООО МПК"/>
+                        <Form.Control value={entity.shortName} onChange={(e) => setEntity({...entity, shortName:e.target.value})} size="sm" type="text" placeholder="ООО МПК"/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Дата регистрации*.</Form.Label>
