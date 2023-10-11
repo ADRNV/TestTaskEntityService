@@ -11,7 +11,7 @@ export default function CheckInput({bankProp, setBankProp}) {
     return (
     <Form.Group className='CheckInput'>
         <Form.Label>Корреспонденский счет*</Form.Label>
-        <Form.Control size="lg" type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
+        <Form.Control size="lg" value={bankProp.correspondentCheck} type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
             var occuredError = {code: 0, message:""}
             if(ValidationUtils.validCorespondCheck(e.target.value, occuredError)){
                 setBankProp({...bankProp, correspondentCheck:e.target.value})
