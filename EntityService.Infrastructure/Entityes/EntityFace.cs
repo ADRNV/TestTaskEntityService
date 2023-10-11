@@ -8,8 +8,16 @@
 
         public string TIN { get; set; }
 
+        public string Name { get; set; }
+
+        public string ShortName { get; set; }
+
         public string MSRN { get; set; }
 
-        public List<BankProp> BankProps { get; }
+        public bool HasOffice { get; set; }
+
+        public DateTime RegistrationDate { get; set; }
+
+        public List<BankProp> BankProps { get; set; } = new();
     }
 }
