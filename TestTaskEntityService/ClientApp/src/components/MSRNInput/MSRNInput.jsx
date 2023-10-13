@@ -13,7 +13,7 @@ export default function MSRNInput({entity, setEntity}) {
         <Form.Control size="sm" type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
             var occuredError = {code: 0, message:""}
             if(ValidationUtils.validateMSRN(e.target.value, occuredError)){
-                setEntity({...entity, tin:e.target.value, fullName:localStorage.getItem(e.target.value)})
+                setEntity({...entity, msrn:e.target.value})
                 setError('')
             }else{
                 setError(occuredError.message)
