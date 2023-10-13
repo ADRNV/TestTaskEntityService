@@ -127,4 +127,10 @@ export default class ValidationUtils{
             return true
         }
     }
+
+    static validateBank(bankProps){
+        return ValidationUtils.validatebic(bankProps.bic, {})
+         & ValidationUtils.validCorespondCheck(bankProps.correspondentCheck, {})
+         & ValidationUtils.validateName(bankProps.name, {})
+    }
 }

@@ -6,27 +6,12 @@ import Form from 'react-bootstrap/Form'
 import { Label } from 'reactstrap'
 import '../CommonStyles/FormStyles.css'
 import { Button } from 'react-bootstrap'
-import EntityClient from '../../Services/EntityFaceClient'
-import { useFetchHook } from '../../hooks/useFetching'
 import { Link } from 'react-router-dom'
 
-export default function PropertyForm({props}) {
+export default function PropertyForm({props, entity, setEntity}) {
     
-    var [property, setProperty] = useState("sp")
-
-    var [entity, setEntity] = useState({ActivityType:property, BIKs:["123"]})
-
-    var [fetching, loading, error] = useFetchHook(async () => {
-        console.log(entity)
-        await EntityClient.createEntity(entity)
-    })
-
-    useEffect(() => {
-        fetching()
-    }, [])
-
     function determineProperty(){
-        switch (property){
+        switch (entity.activityType){
             case "sp":
                 return <SPForm header={"Индивидуальный предприниматель(ИП)"} entity={entity} setEntity={setEntity}/>
             case 'llc':
@@ -45,13 +30,13 @@ export default function PropertyForm({props}) {
                         Выберете вид деятельности
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                    <Dropdown.Item href='#/sp' onClick={() => setProperty("sp")}>Индивидуальный предприниматель (ИП)</Dropdown.Item>
-                    <Dropdown.Item href='#/llc' onClick={() => setProperty("llc")}>Общество с ограниченной ответсвенностью (ООО)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setEntity({...entity, activityType:"sp"})}>Индивидуальный предприниматель (ИП)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setEntity({...entity, activityType:"llc"})}>Общество с ограниченной ответсвенностью (ООО)</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             </Form.Group>
             {determineProperty()}
-            <Button variant="light" onClick={() => fetching()}><Link to={"bankprops"}>Банковские реквизиты</Link></Button>
+            <Button variant="light"><Link to={"bankprops"}>Банковские реквизиты</Link></Button>
         </div>
   )
 }

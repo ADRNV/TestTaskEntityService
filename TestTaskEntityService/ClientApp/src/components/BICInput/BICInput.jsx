@@ -30,7 +30,7 @@ export default function BICInput({bankProp, setBankProp}) {
         <Form.Control size="lg" type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
             var occuredError = {code: 0, message:""}
             if(ValidationUtils.validatebic(e.target.value, occuredError)){
-                setBankProp({...bankProp, bic:e.target.value, name:localStorage.getItem(e.target.value)})
+                setBankProp({...bankProp, bic:e.target.value})
                 fetching()
                 setError('')
             }else{

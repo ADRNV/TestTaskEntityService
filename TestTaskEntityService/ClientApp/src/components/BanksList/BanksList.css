@@ -1,0 +1,5 @@
+.BanksList--container{
+    display: flex;
+    flex-direction: row;
+    gap: 40pt;
+}

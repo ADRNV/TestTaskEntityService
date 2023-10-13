@@ -28,8 +28,6 @@ export default function LLCForm({header, entity, setEntity}) {
                 </div>
                 <br/>
                 <SPForm entity={entity} setEntity={setEntity}></SPForm>
-            <div className='SPForm--row'>
-            </div>
         </div>
     </div>
   )
