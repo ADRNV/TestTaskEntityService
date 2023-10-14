@@ -15,7 +15,7 @@ export default function PropertyForm({props, entity, setEntity, files, setFiles}
             case "sp":
                 return <SPForm header={"Индивидуальный предприниматель(ИП)"} entity={entity} setEntity={setEntity} files={files} setFiles={setFiles}/>
             case 'llc':
-                return <LLCForm header={"Общество с ограниченой ответсвенностью (ООО)"} entity={entity} setEntity={setEntity}></LLCForm>
+                return <LLCForm header={"Общество с ограниченой ответсвенностью (ООО)"} files={files} setFiles={setFiles} entity={entity} setEntity={setEntity}></LLCForm>
         }
             
     }

@@ -16,7 +16,6 @@ export default class EntityClient{
 
       var headers = new Headers();
       headers.append("Content-Type", "application/json");
-
       var raw = JSON.stringify(entity)
 
       var requestOptions = {

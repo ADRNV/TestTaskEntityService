@@ -13,9 +13,6 @@ export default function BanksList({banksProps, setBanksProps}) {
             {banksProps.map((b,i) => 
                <BankForm key={i} banksProps={banksProps} setBanksProps={setBanksProps}/>)
             }
-            <div className='BanksList--container'>
-                <Button onClick={() => setBanksProps([...banksProps, {}])}>Добавить банк</Button>
-            </div>
         </div>
   )
 }

@@ -14,7 +14,7 @@ namespace TestTaskEntityService.Features.EntityFaces
                 foreach (var formFile in request.Files)
                 {
                     var path = Path.Combine(Environment.CurrentDirectory,
-                        $"{formFile.FileName}_{request.EntityName}_{Guid.NewGuid()}");
+                        @$"{request.EntityName.Replace("\""," ")}_{Guid.NewGuid()}_{formFile.FileName}");
 
                     using (var stream = new FileStream(path, FileMode.Create))
                         await formFile.CopyToAsync(stream);
