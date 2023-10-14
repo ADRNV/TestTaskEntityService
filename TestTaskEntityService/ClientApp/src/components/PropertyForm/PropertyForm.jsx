@@ -8,12 +8,12 @@ import '../CommonStyles/FormStyles.css'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-export default function PropertyForm({props, entity, setEntity}) {
+export default function PropertyForm({props, entity, setEntity, files, setFiles}) {
     
     function determineProperty(){
         switch (entity.activityType){
             case "sp":
-                return <SPForm header={"Индивидуальный предприниматель(ИП)"} entity={entity} setEntity={setEntity}/>
+                return <SPForm header={"Индивидуальный предприниматель(ИП)"} entity={entity} setEntity={setEntity} files={files} setFiles={setFiles}/>
             case 'llc':
                 return <LLCForm header={"Общество с ограниченой ответсвенностью (ООО)"} entity={entity} setEntity={setEntity}></LLCForm>
         }

@@ -16,7 +16,7 @@
 
         public List<BankProp> BankProps { get; set; }
 
-
+        public bool HasOffice { get; set; }
 
         public DateTime RegistrationDate { get; set; }
     }

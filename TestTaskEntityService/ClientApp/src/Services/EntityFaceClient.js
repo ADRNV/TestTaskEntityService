@@ -27,4 +27,21 @@ export default class EntityClient{
 
     return fetch("https://localhost:7239/Entity/api/create", requestOptions)
   }
+
+  static async uploadDocs(files, entityFullName){
+
+    var data = new FormData()
+    
+    files.forEach(file => {
+      data.append('document', file)
+    });
+
+    console.log(data.entries())
+    var requestOptions = {
+      method: 'POST',
+      body: data
+    };
+
+    return fetch(`https://localhost:7239/Entity/api/uploaddocument?entityName=${entityFullName}`, requestOptions)
+  }
 }

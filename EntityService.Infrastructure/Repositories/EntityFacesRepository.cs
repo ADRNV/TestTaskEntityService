@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EntityService.Core.Repositories;
+using EntityService.Infrastructure.Entityes;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntityService.Infrastructure.Repositories
@@ -17,9 +18,25 @@ namespace EntityService.Infrastructure.Repositories
         {
             var dbEntity = MapToDb(entity);
 
+            //var newBanks = FindNewBanks(dbEntity);
+
+            //dbEntity.BankProps = newBanks.ToList();
+
             await _organizationContext.EntityesFaces.AddAsync(dbEntity);
 
             await Save(dbEntity, EntityState.Added);
+        }
+
+        private IEnumerable<BankProp> FindNewBanks(DbEntityFace dbEntityFace)
+        {
+            var sameBanks = _organizationContext.BankProps
+                .UnionBy(dbEntityFace.BankProps, b => b.BIC);
+
+            var intersectBanks = sameBanks.Intersect(dbEntityFace.BankProps);
+
+            dbEntityFace.BankProps.AddRange(intersectBanks);
+
+            return intersectBanks.AsEnumerable();
         }
 
         public override async Task Delete(CoreEntityFace entity)

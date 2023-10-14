@@ -14,9 +14,19 @@ export default function App(){
 
     var [banksProps, setBanksProps] = useState([])
 
-    var [create, loading, error] = useFetchHook(async () => {
+    var [files, setFiles] = useState([])
+
+    var [createEntity, loading, error] = useFetchHook(async () => {
         console.log(entity)
         await EntityClient.createEntity(entity)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    })
+
+    var [upload, loading, error] = useFetchHook(async () => {
+        console.log(entity)
+        await EntityClient.uploadDocs(files, entity.fullName)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -25,13 +35,14 @@ export default function App(){
     return (
         <BrowserRouter>
             <Routes>
-                <Route key="propertyform" path='/' element={<PropertyForm entity={entity} setEntity={setEntity}/>}/>
+                <Route key="propertyform" path='/' element={<PropertyForm entity={entity} setEntity={setEntity} files={files} setFiles={setFiles}/>}/>
                 <Route key="bankprops" path='/bankprops' element={
                     <div>
                         <BanksList banksProps={banksProps} setBanksProps={setBanksProps}/>
                         <Button onClick={() => {
                             setEntity({...entity, bankProps:[...banksProps]})
-                            create()
+                            createEntity()
+                            upload()
                         }}>Отправить</Button>
                     </div>
                 }/>

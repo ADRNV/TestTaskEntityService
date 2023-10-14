@@ -5,7 +5,7 @@ import './LLCForm.css'
 import '../CommonStyles/FormStyles.css'
 import SPForm from '../SPForm/SPForm'
 
-export default function LLCForm({header, entity, setEntity}) {
+export default function LLCForm({header, entity, setEntity, files, setFiles}) {
   return (
     <div className='LLCForm'>
         <div className='LLCForm--container'>
@@ -21,13 +21,9 @@ export default function LLCForm({header, entity, setEntity}) {
                         <Form.Label>Наименование сокращение*.</Form.Label>
                         <Form.Control value={entity.shortName} onChange={(e) => setEntity({...entity, shortName:e.target.value})} size="sm" type="text" placeholder="ООО МПК"/>
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Дата регистрации*.</Form.Label>
-                        <Form.Control onChange={(e) => setEntity({...entity, registrationDate:e.target.value})} size="sm" type="date"/>
-                   </Form.Group>
                 </div>
                 <br/>
-                <SPForm entity={entity} setEntity={setEntity}></SPForm>
+                <SPForm entity={entity} setEntity={setEntity} files={files} setFiles={setFiles}></SPForm>
         </div>
     </div>
   )
