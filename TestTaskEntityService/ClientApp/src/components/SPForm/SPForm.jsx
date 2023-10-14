@@ -27,7 +27,7 @@ export default function SPForm({header, entity, setEntity, files, setFiles}) {
                     <Label>Скан выписки из ЕГРИП(не старше 3 месяцев)*</Label>
                     <Form.Control type="file" onChange={(e) => setFiles([...files, e.target.files[0]])}/>
                 </Form.Group>
-                    <MSRNInput entity={entity} setEntity={setEntity}/>
+                    <MSRNInput value={entity.msrn} entity={entity} setEntity={setEntity}/>
                     <br/>
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Скан ОГРНИП*</Form.Label>

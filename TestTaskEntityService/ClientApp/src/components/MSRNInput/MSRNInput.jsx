@@ -4,13 +4,13 @@ import ValidationUtils from '../Validation/ValidationUtils'
 import { Label } from 'reactstrap'
 import '../CommonStyles/FormStyles.css'
 
-export default function MSRNInput({entity, setEntity}) {
+export default function MSRNInput(props, {entity, setEntity}) {
 
     var [error, setError] = useState('')
   return (
     <Form.Group className='MSRNInput'>
         <Form.Label>ОГРНИП*</Form.Label>
-        <Form.Control size="sm" type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
+        <Form.Control {...props} size="sm" type="text" placeholder="xxxxxxxxxx" onChange={(e) => {
             var occuredError = {code: 0, message:""}
             if(ValidationUtils.validateMSRN(e.target.value, occuredError)){
                 setEntity({...entity, msrn:e.target.value})

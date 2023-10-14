@@ -16,11 +16,13 @@ export default function TINInput({entity, setEntity}) {
         .then(result => {
             console.log(result.suggestions[0])
             var nameInfo = result.suggestions[0].data.name
-            setEntity({...entity, fullName:nameInfo.full_with_opf, shortName:nameInfo.short_with_opf})
+            var ornip = result.suggestions[0].data.ogrn
+            setEntity({...entity, fullName:nameInfo.full_with_opf, shortName:nameInfo.short_with_opf, msrn:ornip})
             console.log(nameInfo)
+            console.log(ornip)
             return nameInfo 
         })
-        .catch(error => console.log("error", error.message))
+        .catch(error => console.log("error", e.message))
     })
 
     return (
